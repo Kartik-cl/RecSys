@@ -1,0 +1,11 @@
+{
+    
+    "watson": [
+        {"attributes": "forWhom",
+         "queryText": "For whom do you want to buy? "},
+        {"attributes": "product",
+         "queryText": "Please type in the product type: "},
+        {"attributes": "color",
+         "queryText": "Please select the color [yellow, blue, pink]: "}
+    ]
+}

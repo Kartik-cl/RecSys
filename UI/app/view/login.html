@@ -1,0 +1,19 @@
+<div ng-controller="loginController as vm">
+    <form name="loginForm" novalidate="novalidate" id="loginForm">
+        <div class="login-div">
+            
+            <div class="auth-div top-gap">
+                <input type="text" placeholder="Username" ng-model="vm.username" />
+            <div>
+            <div class="auth-div">
+                <input type="password" placeholder="Password" />
+            </div>
+            <div class="auth-div">
+                <button class="login-btn" ng-click="vm.onLoginClick()">login</button>
+            </div>
+            <!--<div class="auth-div btm-gap">
+                <span class="info">Not an user?</span><span class="info-link pointer" ng-click="vm.onGuestClick()">Login as <b>Guest</b></span>
+            </div>-->
+        </div>
+    </form>
+</div>

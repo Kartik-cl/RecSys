@@ -1,0 +1,89 @@
+<form name="chatForm" novalidate="novalidate" id="chatForm">
+    <div ng-controller="dashboardController as vm">
+        <div class="dash-div">
+            <div class="dash-div-c">
+                <div class="chat-display" scroll="vm.watsonChat">
+                    <div class="chat-info">
+                        <div class="cht-cont">
+                            <div ng-repeat="(index, chat) in vm.watsonChat">
+                                <div class="chat-inst" ng-if="chat.watson !== '' || chat.watsonTyping" ng-focus="$index===(vm.watsonChat.length-1)">
+                                    <div class="incoming_msg_img">
+                                        <img src="../img/watson.png" alt="Watson" />
+                                    </div>
+                                    <div class="received_msg" ng-if="chat.watson !== '' || chat.watsonTyping">
+                                        <div ng-class="{'received_withd_msg-ld': chat.watsonTyping, 'received_withd_msg': !chat.watsonTyping}">
+                                            <p ng-class="{'bold-text': chat.watsonTyping && vm.isTypingOrThinking}" ng-if="chat.watsonTyping">
+                                                {{vm.watsonTypingText}}
+                                            </p>
+                                            <p ng-if="!chat.watsonTyping">{{chat.watson}}</p>
+                                        </div>
+                                        
+                                        <div class="wrapper" ng-if="chat.recommendations || chat.styleRecommend">
+                                            <div class="scrolls">
+                                                <div class="imageDiv">
+                                                    <div ng-repeat="product in chat.products" class="thmb-pic">
+                                                        <image-modal img-src="{{product.image_src}}" img-label="{{product.product_name}}" 
+                                                                     is-opt-purchase="chat.recommendations"
+                                                                     opt-purchase="vm.onOptForPurchaseClick(option, product)"
+                                                                     is-show-more="{{product.in_product_inventory}}"
+                                                                     show-more="vm.onShowMoreClick(product)"></image-modal>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-search"  ng-show="chat.showList" ng-class="{'fade':chat.selectedItem !== ''}" ng-hide="chat.selectedItem !== ''">
+                                            <div class="list-search-lst" ng-class="{'expand' : !chat.isMore}">
+                                                <div class="lst-item1" ng-repeat="(iIndex, item) in chat.naValues " 
+                                                    ng-class="{'lst-item1-sel':(chat.selectedItem === item), 'lst-item1': (chat.selectedItem !== item)}" 
+                                                        ng-click="vm.onItemSelect(index, item)">{{item}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-search"  ng-show="chat.isViewRelatedProducts" ng-class="{'fade':chat.isViewRelatedProducts}" ng-hide="!chat.isViewRelatedProducts">
+                                            <div class="list-search-lst" ng-class="{'expand' : !chat.isMore}">
+                                                <div class="lst-item1 yes-no"
+                                                     ng-class="{'lst-item1-sel':(chat.viewRelatedProduct==='yes'), 'lst-item1': (chat.viewRelatedProduct==='no')}" 
+                                                        ng-click="vm.isRelatedCick(index, 'yes')">Yes
+                                                </div>
+                                                <div class="lst-item1 yes-no" 
+                                                     ng-class="{'lst-item1-sel':(chat.viewRelatedProduct==='no'), 'lst-item1': (chat.viewRelatedProduct==='yes')}" 
+                                                        ng-click="vm.isRelatedCick(index, 'no')">No
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="outgoing_msg" ng-if="chat.user !== '' || chat.userTyping">
+                                    <div class="chat-avtr red" ng-if="vm.loggedUser.gender === 'female'">
+                                        <img src="../img/user_f.png" alt="User" />
+                                    </div>
+                                    <div class="chat-avtr red" ng-if="vm.loggedUser.gender === 'male'">
+                                        <img src="../img/user_m.png" alt="User" />
+                                    </div>
+                                    <div ng-class="{'sent_msg-tpe': chat.userTyping, 'sent_msg': !chat.userTyping}">
+                                        <p ng-class="{'bold-text': chat.userTyping && vm.isTypingOrThinking}" ng-if="chat.userTyping">
+                                            {{vm.userTypingText}}
+                                        </p>
+                                        <p ng-if="!chat.userTyping">{{chat.user}}</p>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>                       
+                    </div>
+                </div>
+                <div class="chat-box">
+                    <div class="chat-box-c">
+                        <div class="cht-txt-box">
+                            <input ng-disabled="vm.endOfChat" type="text" ng-if="!vm.endOfChat" class="cht-txt-box-c" ng-change="vm.onChangeInput()" ng-model="vm.userInput"/>
+                        </div>
+                        <div class="cht-btn pointer">
+                            <button type="submit" ng-click="vm.onUserInputClick()" class="send-btn" ng-class="{'send-btn-dsbl': vm.endOfChat}">
+                                <img  src="../img/telegram.png" alt="User" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,27 @@
+{
+  "name": "recommendence",
+  "version": "1.0.0",
+  "description": "WatsonRetail",
+  "scripts": {
+    "start": "node server/web-server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Monika M",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-connect-proxy": "^0.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-express": "^1.4.1",
+    "grunt-open": "^0.2.3",
+    "matchdep": "^2.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect": "^3.6.6",
+    "connect-multiparty": "^2.1.1",
+    "express": "^4.16.3"
+  }
+}

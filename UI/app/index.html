@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html class="no-js " lang="en" dir="ltr" data-ng-app="watsonRetailApp">
+    <head>
+        <title>WatsonRetail</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=8,9,10,11,edge, chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        
+        <!-- style - start -->
+        <link rel="icon" href="styles/images/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <!-- style - end -->
+
+        <!-- bower component - start -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/ng-content-editable/dist/ng-content-editable.js"></script>
+        <script src="bower_components/angular-dragdrop/src/angular-dragdrop.js"></script> 
+        <!-- bower component - end -->
+        
+        <script src="scripts/app.js"></script>
+        <script src="scripts/config/appconfig.js"></script>
+        <script src="scripts/config/apprun.js"></script>
+        <script src="scripts/config/routeconfig.js"></script>
+        
+        <script src="scripts/controllers/loginController.js"></script>
+        <script src="scripts/controllers/dashboardController.js"></script>
+        <script src="scripts/controllers/headerController.js"></script>
+        
+        <script src="scripts/services/dataModel/business/orchestranBusiness.js"></script>
+        <script src="scripts/services/dataModel/data/orchestranData.js"></script>
+        
+        <script src="scripts/services/utility/objectStorage.js"></script>
+        <script src="scripts/services/utility/businessUtility.js"></script>
+        <script src="scripts/services/utility/commonUtility.js"></script>
+        <script src="scripts/services/dataModel/dataAccess.js"></script>
+        
+        <script src="scripts/services/constants/defaultValues.js"></script>
+        <script src="scripts/services/constants/applicationProperties.js"></script>
+        <script src="scripts/services/storage/objectStorage.js"></script>
+        <script src="scripts/filters/startWithFilter.js"></script>
+        <script src="scripts/directives/attributes/focusMe.js"></script>
+        <script src="scripts/directives/imageModal.js"></script>
+        <script src="scripts/directives/attributes/scroll.js"></script>
+        <base href="/">
+    </head>
+    <body>
+        <header>
+            <div class="header-div" ng-controller="headerController as vm">
+                <div ng-if="vm.showLoader && isLogin">
+                    <div class="loader small-wizard-loader-hr"></div>
+                    <div class="overlay-loader"></div>
+                </div>
+                <div class="user-show" ng-show="isLogin && vm.user !== '' && !vm.showLoader">
+                    Welcome {{vm.user}} <span ng-click="vm.onLogoutClick()">Logout</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="container">
+            <div ng-view></div>
+        </div>
+    </body>
+</html>

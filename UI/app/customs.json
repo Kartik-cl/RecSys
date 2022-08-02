@@ -1,0 +1,27 @@
+{
+    "elements": {
+        "image-modal": {
+            "attributes": {
+                "img-label": {},
+                "opt-purchase": {},
+                "is-show-more": {},
+                "img-src": {},
+                "is-opt-purchase": {},
+                "show-more": {}
+            }
+        },
+        "file-uploader": {
+            "attributes": {
+                "upload-file": {}
+            }
+        }
+    },
+    "attributes": {
+        "scroll": {
+            "context": "div"
+        },
+        "focus-me": {
+            "context": "input"
+        }
+    }
+}

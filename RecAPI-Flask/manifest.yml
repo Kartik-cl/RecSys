@@ -1,0 +1,7 @@
+---
+applications:
+ - name: recapi
+   random-route: false
+   host: recapidl1
+   memory: 4000M
+   disk_quota: 1000M

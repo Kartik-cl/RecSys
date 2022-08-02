@@ -1,0 +1,9 @@
+---
+applications:
+- name: weco-soe
+  instances: 1
+  path: ./target/recsysbot-soe-0.1.war
+  buildpack: liberty-for-java
+  memory: 1024M
+  domain: mybluemix.net
+  disk_quota: 1024M
